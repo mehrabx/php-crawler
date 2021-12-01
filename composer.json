@@ -1,0 +1,15 @@
+{
+    "name": "root/html",
+    "authors": [
+        {
+            "name": "mehrabx",
+            "email": "developer.mehr@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.4",
+        "ext-libxml": "*",
+        "ext-curl": "*",
+        "ext-dom": "*"
+    }
+}
