@@ -1,29 +1,20 @@
 <?php
 
-include_once 'DomDocumentSelector.php';
-include_once 'CrawlBuilder.php';
-include_once 'CrawlFacade.php';
-include_once 'Spider.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
-//$urls = [
-//    'https://www.mongard.ir/courses/?page=2' => ["//img[@class='course_image']"],
-//    'https://www.mongard.ir/courses/?page=3' => ["//img[@class='course_image']"],
-////    'https://www.mongard.ir/courses/?page=4' => ["//img[@class='course_image']"],
-//];
+use Crawler\Facades\CrawlFacade;
 
 $urls = [
-    'https://footballi.net' => ["//img[@class='player-pic']","//img[@class='object-fit-cover']"],
+    'https://www.mongard.ir/courses/?page=2' => ["//img[@class='course_image']","//a[@class='course_link']"],
+    'https://www.mongard.ir/courses/?page=3' => ["//img[@class='course_image']"],
+//    'https://www.mongard.ir/courses/?page=4' => ["//img[@class='course_image']"],
 ];
 
-return (new CrawlFacade())->work($urls);
+//$urls = [
+//    'https://footballi.net' => ["//img[@class='player-pic']"],
+//];
 
+return var_dump(CrawlFacade::work($urls)->start()) ;
 
-//$selector = "//img[@class='course_image']";
-
-//$spider = (new CrawlBuilder($urls))
-//    ->sleep(10)
-//    ->exportType('xpath')
-//    ->exportType('DomObject')
-//    ->build();
 
 

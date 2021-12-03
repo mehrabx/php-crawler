@@ -1,5 +1,8 @@
 <?php
 
+namespace Crawler\Selectors;
+
+use Crawler\Selectors\SelectInterface;
 
 class CssSelector implements SelectInterface
 {

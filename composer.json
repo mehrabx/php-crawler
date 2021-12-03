@@ -1,15 +1,23 @@
 {
-    "name": "root/html",
+    "name": "mehrabx/web-crawler",
+    "description": "A web crawler package",
+    "type": "library",
+    "license": "MIT",
     "authors": [
         {
             "name": "mehrabx",
             "email": "developer.mehr@gmail.com"
         }
     ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Crawler\\": "src/"
+        }
+    },
     "require": {
-        "guzzlehttp/guzzle": "^7.4",
         "ext-libxml": "*",
         "ext-curl": "*",
         "ext-dom": "*"
-    }
-}
+    }}
+
