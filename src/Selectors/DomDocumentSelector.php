@@ -40,7 +40,7 @@ class DomDocumentSelector implements SelectInterface
         $this->result = [];
 
         if (!is_array($selects) || !$selects) {
-            $this->generateData($domx, $this->defaultSelect);
+            $this->generateData($domx, $selects ?? $this->defaultSelect);
         } else {
             foreach ($selects as $item) {
                 $this->generateData($domx, $item);
@@ -63,7 +63,7 @@ class DomDocumentSelector implements SelectInterface
         return $dom;
     }
 
-    private function generateData($domx, $select)
+    public function generateData($domx, $select)
     {
         $elements = $domx->query($select);
         if (!is_null($elements)) {
@@ -71,36 +71,35 @@ class DomDocumentSelector implements SelectInterface
                 $this->result[$select][] = $element;
 //                $this->result[$select] = $this->defineExportType($element);
 //                $this->result[$select] = $this->getAttribute($element, 'src');
-//                $this->result[$select] = "<img src='{$this->getAttribute($element,'src')}' height='150' width='150'>";
             }
         }
     }
 
-    private function defineExportType($element)
-    {
-        if (is_array($this->exportType)) {
-            $data = [];
-            foreach ($this->exportType as $type => $value) {
-                switch ($type) {
-                    case 'attr' :
-                        $data['attr'][] = $this->getAttribute($element, $value);
-//                    case 'value' : $data[''][] =
-                }
-            }
-            return $data;
-        }
-
-        return $element;
-    }
-
-    public static function getAttribute($element, $attrName)
-    {
-        foreach ($element->attributes as $node) {
-            if ($node->name == $attrName) {
-                return $node->value;
-            }
-        }
-    }
-
+//    private function defineExportType($element)
+//    {
+//        if (is_array($this->exportType)) {
+//            $data = [];
+//            foreach ($this->exportType as $type => $value) {
+//                switch ($type) {
+//                    case 'attr' :
+//                        $data['attr'][] = $this->getAttribute($element, $value);
+////                    case 'value' : $data[''][] =
+//                }
+//            }
+//            return $data;
+//        }
+//
+//        return $element;
+//    }
+//
+//    public static function getAttribute($element, $attrName)
+//    {
+//        foreach ($element->attributes as $node) {
+//            if ($node->name == $attrName) {
+//                return $node->value;
+//            }
+//        }
+//    }
+//
 
 }
