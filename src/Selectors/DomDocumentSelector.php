@@ -7,35 +7,23 @@ use Crawler\Selectors\SelectInterface;
 class DomDocumentSelector implements SelectInterface
 {
     public static $dom;
-    public static $domx;
+    public $domx;
     public $defaultSelect;
     public $exportType;
     public $result = [];
 
-    public function __construct($defaultSelect, $exportType)
+    public function __construct($defaultSelect = null, $exportType = null)
     {
         $this->defaultSelect = $defaultSelect;
         $this->exportType = $exportType;
     }
 
-    public static function setDOMDocument(): \DOMDocument
-    {
-        if (!self::$dom)
-            self::$dom = new \DOMDocument();
-        return self::$dom;
-    }
-
-    public static function setDOMXPath($dom): \DOMXPath
-    {
-        return self::$domx = new \DOMXPath($dom);
-    }
 
     public function filter($content, $selects)
     {
 
         $dom = $this->initialDOMDocument($content);
-
-        $domx = self::setDOMXPath($dom);
+        $domx = $this->setDOMXPath($dom);
 
         $this->result = [];
 
@@ -51,10 +39,28 @@ class DomDocumentSelector implements SelectInterface
     }
 
 
+    public function generateData($domx, $select)
+    {
+        if (!$select) return $this->result[$select][] = null;
+
+        $elements = $domx->query($select);
+        if (!is_null($elements)) {
+            foreach ($elements as $element) {
+                $this->result[$select][] = $element;
+            }
+        }
+
+    }
+
+    public function setDOMXPath($dom): \DOMXPath
+    {
+        $this->domx = new \DOMXPath($dom);
+        return $this->domx;
+    }
+
     public function initialDOMDocument($content): \DOMDocument
     {
-        $dom = self::setDOMDocument();
-//        $dom = new DOMDocument();
+        $dom = new \DOMDocument();
 
         libxml_use_internal_errors(true);
         $dom->loadHTML($content);
@@ -63,17 +69,9 @@ class DomDocumentSelector implements SelectInterface
         return $dom;
     }
 
-    public function generateData($domx, $select)
-    {
-        $elements = $domx->query($select);
-        if (!is_null($elements)) {
-            foreach ($elements as $element) {
-                $this->result[$select][] = $element;
+
 //                $this->result[$select] = $this->defineExportType($element);
 //                $this->result[$select] = $this->getAttribute($element, 'src');
-            }
-        }
-    }
 
 //    private function defineExportType($element)
 //    {

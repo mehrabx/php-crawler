@@ -3,6 +3,9 @@
 namespace Crawler\Core;
 
 use Crawler\Selectors\SelectInterface;
+use PHPUnit\Framework\MockObject\MockBuilder;
+use PHPUnit\Framework\MockObject\MockMethod;
+use PHPUnit\Framework\MockObject\MockObject;
 
 class Spider
 {
@@ -11,7 +14,7 @@ class Spider
     public $sleep;
     public $result;
 
-    public function __construct($url, $sleep)
+    public function __construct($url, $sleep = 0)
     {
         $this->url = $url;
         $this->sleep = $sleep;
@@ -42,16 +45,17 @@ class Spider
                 }
 
                 $content = $this->getContent($url);
+
                 $this->result[$url] = $selectClass->filter($content, $selectors);
-                $this->delay();
             }
 
         return $this->result;
     }
 
-    public function delay()
+    public function getSleep()
     {
         return $this->sleep == 0 ? null : sleep($this->sleep);
     }
+
 
 }
