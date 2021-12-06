@@ -5,15 +5,16 @@ namespace Crawler\Facades;
 use Crawler\Selectors\DomDocumentSelector;
 use Crawler\Selectors\CssSelector;
 use Crawler\Core\Spider;
+use Crawler\Selectors\SelectInterface;
 
 class CrawlFacade
 {
 
-    private $urls;
-    private $selector = 'xpath';
-    private $defaultSelect = null;
-    private $sleep = 0;
-    private $exportType = 'DOMElement';
+    public $urls;
+    public $selector = 'xpath';
+    public $defaultSelect = null;
+    public $sleep = 0;
+    public $exportType = 'DOMElement';
 
     public function __construct($urls)
     {
@@ -28,14 +29,14 @@ class CrawlFacade
     }
 
     // manage dependency
-    public function setSelectorClass($selectorClassName, $defaultSelect, $exportType): DomDocumentSelector
+    public function setSelectorClass($selectorClassName, $defaultSelect, $exportType): SelectInterface
     {
         switch ($selectorClassName) {
             case 'xpath' :
                 return new DomDocumentSelector($defaultSelect, $exportType);
                 break;
             case 'css' :
-                return new CssSelector($exportType);
+                return new CssSelector($defaultSelect, $exportType);
                 break;
             default :
                 return new DomDocumentSelector($defaultSelect, $exportType);

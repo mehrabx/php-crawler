@@ -23,7 +23,7 @@ class SpiderTest extends TestCase
         $this->selectArray = ["//img[@class='course_image']"];
         $this->selectString = "//img[@class='course_image']";
     }
-
+//
     public function test_sleep_method_with_argument_not_equal_0()
     {
         $sleep = 1;
@@ -55,7 +55,6 @@ class SpiderTest extends TestCase
        $this->assertTrue(isset($this->spider->result['https://google.com']));
        $this->assertTrue(is_array($this->spider->result['https://google.com']));
        $this->assertTrue(in_array($this->selectString,array_keys($this->spider->result['https://google.com'])));
-
        $this->assertTrue(isset($this->spider->result['https://test.ir']));
        $this->assertTrue(is_array($this->spider->result['https://test.ir']));
         $this->assertTrue(in_array($this->selectString,array_keys($this->spider->result['https://test.ir'])));

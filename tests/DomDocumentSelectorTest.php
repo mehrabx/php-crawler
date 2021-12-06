@@ -17,61 +17,61 @@ final class DomDocumentSelectorTest extends TestCase
         $this->selectString = "//img[@class='course_image']";
         $this->domSelector = new DomDocumentSelector();
     }
-
-    public function test_filter_method_when_select_is_array()
-    {
-        list($domSelector, $res) = $this->call_filter_method($this->selectArray);
-
-        $this->assertCount(1, $res);
-        $this->assertCount(3, $res[$this->selectArray[0]]);
-        $this->assertTrue($res[$this->selectArray[0]][rand(0, 2)] instanceof DOMElement);
-    }
-
-    public function test_filter_method_when_select_is_string()
-    {
-        list($domSelector, $res) = $this->call_filter_method($this->selectString);
-
-        $this->assertCount(1, $res);
-        $this->assertCount(3, $res[$this->selectString]);
-        $this->assertTrue($res[$this->selectString][rand(0, 2)] instanceof DOMElement);
-
-    }
-
-    public function test_filter_method_when_select_is_not_set_and_use_default_select()
-    {
-        list($domSelector, $res) = $this->call_filter_method(null, $setDefault = true);
-
-        $res = $domSelector->result;
-
-        $this->assertCount(1, $res);
-        $this->assertCount(3, $res[$domSelector->defaultSelect]);
-        $this->assertTrue($res[$domSelector->defaultSelect][rand(0, 2)] instanceof DOMElement);
-    }
-
-    public function test_filter_method_when_select_and_default_select_is_not_set()
-    {
-        list($domSelector, $res) = $this->call_filter_method(null, $setDefault = false);
-
-        $this->assertCount(1, $res);
-        $this->assertCount(1, $res[$domSelector->defaultSelect]);
-        $this->assertEmpty($res[$domSelector->defaultSelect][0]);
-    }
-
-    /**
-     * @param $select
-     * @return array
-     */
-    public function call_filter_method($select, $setDefault = false)
-    {
-        $domSelector = $this->domSelector;
-
-        $setDefault ? $domSelector->defaultSelect = $this->selectString : null;
-
-        $res = $domSelector->filter(file_get_contents(__DIR__ . '/ContentTest.html'), $select);
-
-        return array($domSelector, $domSelector->result);
-    }
-
+//
+//    public function test_filter_method_when_select_is_array()
+//    {
+//        list($domSelector, $res) = $this->call_filter_method($this->selectArray);
+//
+//        $this->assertCount(1, $res);
+//        $this->assertCount(3, $res[$this->selectArray[0]]);
+//        $this->assertTrue($res[$this->selectArray[0]][rand(0, 2)] instanceof DOMElement);
+//    }
+//
+//    public function test_filter_method_when_select_is_string()
+//    {
+//        list($domSelector, $res) = $this->call_filter_method($this->selectString);
+//
+//        $this->assertCount(1, $res);
+//        $this->assertCount(3, $res[$this->selectString]);
+//        $this->assertTrue($res[$this->selectString][rand(0, 2)] instanceof DOMElement);
+//
+//    }
+//
+//    public function test_filter_method_when_select_is_not_set_and_use_default_select()
+//    {
+//        list($domSelector, $res) = $this->call_filter_method(null, $setDefault = true);
+//
+//        $res = $domSelector->result;
+//
+//        $this->assertCount(1, $res);
+//        $this->assertCount(3, $res[$domSelector->defaultSelect]);
+//        $this->assertTrue($res[$domSelector->defaultSelect][rand(0, 2)] instanceof DOMElement);
+//    }
+//
+//    public function test_filter_method_when_select_and_default_select_is_not_set()
+//    {
+//        list($domSelector, $res) = $this->call_filter_method(null, $setDefault = false);
+//
+//        $this->assertCount(1, $res);
+//        $this->assertCount(1, $res[$domSelector->defaultSelect]);
+//        $this->assertEmpty($res[$domSelector->defaultSelect][0]);
+//    }
+//
+//    /**
+//     * @param $select
+//     * @return array
+//     */
+//    public function call_filter_method($select, $setDefault = false)
+//    {
+//        $domSelector = $this->domSelector;
+//
+//        $setDefault ? $domSelector->defaultSelect = $this->selectString : null;
+//
+//        $res = $domSelector->filter(file_get_contents(__DIR__ . '/ContentTest.html'), $select);
+//
+//        return array($domSelector, $domSelector->result);
+//    }
+//
     public function test_initialDOMDocument_method()
     {
         $res = $this->domSelector->initialDOMDocument(file_get_contents(__DIR__.'/ContentTest.html'));
