@@ -5,7 +5,7 @@ namespace Crawler\Facades;
 use Crawler\Selectors\DomDocumentSelector;
 use Crawler\Selectors\CssSelector;
 use Crawler\Core\Spider;
-use Crawler\Selectors\SelectInterface;
+use Crawler\Contracts\SelectInterface;
 
 class CrawlFacade
 {
@@ -61,9 +61,9 @@ class CrawlFacade
         return $this;
     }
 
-    public static function work($urls)
+    public static function make($urls)
     {
-        return new CrawlFacade($urls);
+        return new self($urls);
     }
 
 }

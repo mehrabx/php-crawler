@@ -2,10 +2,8 @@
 
 namespace Crawler\Core;
 
-use Crawler\Selectors\SelectInterface;
-use PHPUnit\Framework\MockObject\MockBuilder;
-use PHPUnit\Framework\MockObject\MockMethod;
-use PHPUnit\Framework\MockObject\MockObject;
+use Crawler\Contracts\SelectInterface;
+
 
 class Spider
 {

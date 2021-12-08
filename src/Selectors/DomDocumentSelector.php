@@ -2,7 +2,7 @@
 
 namespace Crawler\Selectors;
 
-use Crawler\Selectors\SelectInterface;
+use Crawler\Contracts\SelectInterface;
 
 class DomDocumentSelector implements SelectInterface
 {

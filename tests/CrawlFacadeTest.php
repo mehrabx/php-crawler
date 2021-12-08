@@ -1,6 +1,7 @@
 <?php
 
 
+use Crawler\Contracts\SelectInterface;
 use Crawler\Facades\CrawlFacade;
 use Crawler\Selectors\CssSelector;
 use Crawler\Selectors\DomDocumentSelector;
@@ -23,22 +24,24 @@ class CrawlFacadeTest extends TestCase
     public function test_setSelectorClass_method_when_selector_is_xpath()
     {
         $res = $this->call_setSelectedClass_method('xpath');
-        $this->assertTrue($res instanceof DomDocumentSelector);
+        $this->assertInstanceOf( DomDocumentSelector::class,$res);
     }
 
     public function test_setSelectorClass_method_when_selector_is_css()
     {
         $res = $this->call_setSelectedClass_method('css');
-        $this->assertTrue($res instanceof CssSelector);
+        $this->assertInstanceOf( CssSelector::class, $res);
+
     }
 
     public function test_setSelectorClass_method_when_selector_is_not_expected()
     {
         $res = $this->call_setSelectedClass_method('other');
-        $this->assertTrue($res instanceof DomDocumentSelector);
+        $this->assertInstanceOf( DomDocumentSelector::class, $res);
+
     }
 
-    public function call_setSelectedClass_method($selector): \Crawler\Selectors\SelectInterface
+    public function call_setSelectedClass_method($selector): SelectInterface
     {
         $crawlFacade = $this->crawFacade;
         return $crawlFacade->setSelectorClass($selector, null, 'DOMElement');
@@ -64,8 +67,8 @@ class CrawlFacadeTest extends TestCase
 
     public function test_work_method()
     {
-        $res = CrawlFacade::work($this->urls);
-        $this->assertTrue($res instanceof CrawlFacade);
+        $res = CrawlFacade::make($this->urls);
+        $this->assertInstanceOf( CrawlFacade::class, $res);
     }
 
 }

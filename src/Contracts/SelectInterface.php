@@ -1,6 +1,6 @@
 <?php
 
-namespace Crawler\Selectors;
+namespace Crawler\Contracts;
 
 interface SelectInterface
 {

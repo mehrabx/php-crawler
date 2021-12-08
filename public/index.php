@@ -14,7 +14,7 @@ $urls = [
 //    'https://footballi.net' => ["//img[@class='player-pic']"],
 //];
 
-return (CrawlFacade::work($urls)->start()) ;
+return CrawlFacade::make($urls)->start() ;
 
 
 
