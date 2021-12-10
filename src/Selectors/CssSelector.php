@@ -1,8 +1,8 @@
 <?php
 
-namespace Crawler\Selectors;
+namespace Mehrabx\Crawler\Selectors;
 
-use Crawler\Contracts\SelectInterface;
+use Mehrabx\Crawler\Contracts\SelectInterface;
 
 class CssSelector implements SelectInterface
 {

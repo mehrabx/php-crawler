@@ -1,7 +1,11 @@
 <?php
 
+namespace Mehrabx\Crawler\Tests;
 
-use Crawler\Core\Spider;
+use DOMElement;
+use Mehrabx\Crawler\Contracts\SelectInterface;
+use Mehrabx\Crawler\Core\Spider;
+use Mockery;
 use PHPUnit\Framework\TestCase;
 
 class SpiderTest extends TestCase
@@ -48,7 +52,7 @@ class SpiderTest extends TestCase
     public function test_search_method()
     {
         //mocking selector
-        $selector = Mockery::mock(\Crawler\Contracts\SelectInterface::class);
+        $selector = Mockery::mock(SelectInterface::class);
         $selector->shouldReceive('filter')
             ->times(2)
             ->with(Mockery::any(), Mockery::any())

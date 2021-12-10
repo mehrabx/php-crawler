@@ -1,7 +1,11 @@
 <?php
 
+namespace Mehrabx\Crawler\Tests;
 
-use Crawler\Selectors\DomDocumentSelector;
+use DOMDocument;
+use DOMElement;
+use DOMXPath;
+use Mehrabx\Crawler\Selectors\DomDocumentSelector;
 use PHPUnit\Framework\TestCase;
 
 final class DomDocumentSelectorTest extends TestCase

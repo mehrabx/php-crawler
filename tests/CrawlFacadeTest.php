@@ -1,10 +1,11 @@
 <?php
 
+namespace Mehrabx\Crawler\Tests;
 
-use Crawler\Contracts\SelectInterface;
-use Crawler\Facades\CrawlFacade;
-use Crawler\Selectors\CssSelector;
-use Crawler\Selectors\DomDocumentSelector;
+use Mehrabx\Crawler\Contracts\SelectInterface;
+use Mehrabx\Crawler\Facades\CrawlFacade;
+use Mehrabx\Crawler\Selectors\CssSelector;
+use Mehrabx\Crawler\Selectors\DomDocumentSelector;
 use PHPUnit\Framework\TestCase;
 
 class CrawlFacadeTest extends TestCase

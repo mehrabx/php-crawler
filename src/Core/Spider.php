@@ -1,8 +1,8 @@
 <?php
 
-namespace Crawler\Core;
+namespace Mehrabx\Crawler\Core;
 
-use Crawler\Contracts\SelectInterface;
+use Mehrabx\Crawler\Contracts\SelectInterface;
 
 
 class Spider

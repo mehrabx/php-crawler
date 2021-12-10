@@ -1,8 +1,9 @@
 <?php
 
-namespace Crawler\Selectors;
+namespace Mehrabx\Crawler\Selectors;
 
-use Crawler\Contracts\SelectInterface;
+use DOMDocument;
+use Mehrabx\Crawler\Contracts\SelectInterface;
 
 class DomDocumentSelector implements SelectInterface
 {
@@ -58,9 +59,9 @@ class DomDocumentSelector implements SelectInterface
         return $this->domx;
     }
 
-    public function initialDOMDocument($content): \DOMDocument
+    public function initialDOMDocument($content): DOMDocument
     {
-        $dom = new \DOMDocument();
+        $dom = new DOMDocument();
 
         libxml_use_internal_errors(true);
         $dom->loadHTML($content);

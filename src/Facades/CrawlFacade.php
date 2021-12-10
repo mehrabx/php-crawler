@@ -1,11 +1,11 @@
 <?php
 
-namespace Crawler\Facades;
+namespace Mehrabx\Crawler\Facades;
 
-use Crawler\Selectors\DomDocumentSelector;
-use Crawler\Selectors\CssSelector;
-use Crawler\Core\Spider;
-use Crawler\Contracts\SelectInterface;
+use Mehrabx\Crawler\Selectors\DomDocumentSelector;
+use Mehrabx\Crawler\Selectors\CssSelector;
+use Mehrabx\Crawler\Core\Spider;
+use Mehrabx\Crawler\Contracts\SelectInterface;
 
 class CrawlFacade
 {

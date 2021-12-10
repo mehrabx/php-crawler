@@ -1,6 +1,6 @@
 <?php
 
-namespace Crawler\Contracts;
+namespace Mehrabx\Crawler\Contracts;
 
 interface SelectInterface
 {

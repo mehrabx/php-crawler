@@ -59,7 +59,6 @@ $urls = [
     'https://test.exp/?page=2' => ["//img[@class='type2'"],
 ];
 
-//set 5 seconds sleep time 
 return \Crawler\Facades\CrawlFacade::make($urls)
                                     ->defaultSelect("//img[@class='type1']")
                                     ->start() ;

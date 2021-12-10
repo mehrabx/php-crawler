@@ -1,27 +1,64 @@
 {
-    "name": "mehrabx/web-crawler",
-    "description": "A web crawler package",
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "mehrabx",
-            "email": "developer.mehr@gmail.com"
-        }
-    ],
-    "minimum-stability": "stable",
-    "autoload": {
-        "psr-4": {
-            "Crawler\\": "src/"
-        }
-    },
-    "require": {
-        "ext-libxml": "*",
-        "ext-curl": "*",
-        "ext-dom": "*"
-    },
-    "require-dev": {
-        "mockery/mockery": "dev-master",
-        "phpunit/phpunit": "^9.5"
+  "name": "mehrabx/web-crawler",
+  "description": "A web crawler package",
+  "type": "library",
+  "license": "MIT",
+  "keywords": [
+    "mehrabx",
+    "crawler",
+    "php crawler",
+    "scrap",
+    "scraper",
+    "php scraper",
+    "spider",
+    "php spider",
+    "crawling",
+    "web crawling",
+    "php web crawling",
+    "php webpage crawling",
+    "scraping",
+    "php scraping",
+    "web scraping",
+    "php web scraping",
+    "web spider",
+    "php web spider",
+    "web-crawler",
+    "web-crawling",
+    "web-spider"
+  ],
+  "homepage": "https://github.com/mehrabx/web-crawler",
+  "authors": [
+    {
+      "name": "mehrabx",
+      "email": "developer.mehr@gmail.com",
+      "homepage": "https://github.com/mehrabx",
+      "role": "Developer"
     }
+  ],
+  "minimum-stability": "stable",
+  "autoload": {
+    "psr-4": {
+      "Mehrabx\\Crawler\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Mehrabx\\Crawler\\Tests\\": "tests"
+    },
+    "scripts": {
+      "test": "phpunit",
+      "check-style": "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests",
+      "fix-style": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests"
+    }
+  },
+  "require": {
+    "php": ">=7.2",
+    "ext-libxml": "*",
+    "ext-curl": "*",
+    "ext-dom": "*"
+  },
+  "require-dev": {
+    "mockery/mockery": "dev-master",
+    "phpunit/phpunit": "^9.5"
+  }
 }
